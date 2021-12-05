@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MVCHW9.Models.Movie>
+
+@{
+    ViewBag.Title = "Top";
+    int rank = 1;
+}
+
+<h2>Top 10 Movies</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Rank
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gross)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.movie_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.language)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.budget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title_year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imdb_score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Director.Director_Name)
+        </th>
+
+        <th></th>
+    </tr>
+    
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        <div>@rank</div>
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.duration)
+    </td>
+    <td>
+        <div>$@item.gross</div>
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.genres)
+    </td>
+    <td>
+        <a class="nav-link" href="/Movies/Details/@item.Movie_Id">@item.movie_title</a>
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.language)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.country)
+    </td>
+    <td>
+        <div>$@item.budget</div>
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.title_year)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.imdb_score)
+    </td>
+    <td>
+        @Html.DisplayFor(model => item.Director.Director_Name)
+    </td>
+
+
+        <td>
+             @Html.ActionLink("Details", "Details", new { id = item.Movie_Id })
+
+         </td>
+
+</tr>
+    }
+
+</table>

@@ -1,0 +1,27 @@
+﻿@model MVCHW9.Models.Director
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Info</h2>
+<h3>Director @Model.Director_Name</h3>
+<div>
+
+    <hr />
+    <div class="dl-horizontal">
+        <h4>Movies Directed Include:</h4>
+        @foreach (var item in Model.Movies)
+        {
+            if (item.director_id == item.Director.Director_Id)
+            {
+                <ul><a class="nav-link" href="/Movies/Details/@item.Movie_Id">@item.movie_title</a> that came out in @item.title_year</ul>
+            }
+
+        }
+
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
